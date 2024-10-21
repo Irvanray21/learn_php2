@@ -1,14 +1,33 @@
 <?php
 require 'connection.php';
 
+$id_person = $_GET['id'];
+
+$data_person = myquery("SELECT * FROM tb_person WHERE id = $id_person");
+var_dump($data_person); // check data person
+
 $data_address = myquery("SELECT * FROM tb_address");
+
+if (isset($_POST['submit_update'])) {
+    //return condition
+    if (update($_POST) > 0) {
+        echo "<script> 
+            alert('Data sucessfully updated');
+            document.location.href = 'index.php';
+            </script>";
+    } else {
+        echo "<script> 
+            alert('Failed to update data');\
+            </script>";
+    }
+}
+
+
+
 
 
 if (isset($_POST['submit_insert_warga'])) {
-    $name = $_POST['txt_name'];
-    $idcard = $_POST['txt_idcard'];
-    $address = $_POST['selectAdd'];
-    $date = $_POST['txt_date'];
+
 
     //formatting date
     $new_date = new DateTime($date);
@@ -58,21 +77,21 @@ if (isset($_POST['submit_insert_warga'])) {
                                 <label>Name</label>
                                 <input class="form-control" type="text" name="txt_name"
                                     placeholder="Input Name Here"
-                                    autocomplete="off" />
+                                    autocomplete="off" value="<?= $data_person[0]['name']; ?>" />
                             </div>
 
                             <div class="mb-3">
                                 <label>ID Card</label>
                                 <input class="form-control" type="text" name="txt_idcard"
                                     placeholder="Input ID Card Here"
-                                    autocomplete="off" />
+                                    autocomplete="off" value="<?= $data_person[0]['card_iden']; ?>" />
                             </div>
 
                             <div class="mb-3">
                                 <label>Add address</label>
                                 <select class="form-select" name="selectAdd">
                                     <?php foreach ($data_address as $option): ?>
-                                        <option value="<?= $option['id'] ?>">
+                                        <option value="<?= $option['id'] ?>" <?php echo ($data_person[0]['address'] === $option['id'] ? 'selected' : ''); ?>>
                                             <?= $option['home_num'] ?>
                                         </option>
                                     <?php endforeach; ?>
@@ -82,7 +101,7 @@ if (isset($_POST['submit_insert_warga'])) {
                             <div class="mb-3">
                                 <label>ID Card</label>
                                 <input class="form-control" type="date" name="txt_date"
-                                    autocomplete="off" />
+                                    autocomplete="off" value="<? $data_person[0]['regis_date'] ?>" />
                             </div>
 
                             <div class="mb-3">

@@ -23,7 +23,8 @@ $connection = mysqli_connect($hostname, $user, $password, $db_name);
 
 
 
-function myquery($query){
+function myquery($query)
+{
     global $connection;
     $res = mysqli_query($connection, $query);
     $returns = [];
@@ -34,6 +35,3 @@ function myquery($query){
     }
     return $returns;
 }
-
-
-?>

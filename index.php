@@ -4,7 +4,7 @@ require 'connection.php';
 $data = myquery("SELECT p.id, p.name, p.card_iden, p.regis_date, a.home_add
 FROM tb_person as p
 JOIN tb_address as a
-ON p.address = a. id"); 
+ON p.address = a. id");
 
 ?>
 
@@ -31,7 +31,7 @@ ON p.address = a. id");
 
                 <a href="form_insert.php">Add Data</a>
 
-                <?php if(isset($_GET['messages'])): ?>
+                <?php if (isset($_GET['messages'])): ?>
                     <p color="red">
                         <?= $_GET['messages']; ?>
                     </p>
@@ -53,7 +53,7 @@ ON p.address = a. id");
                         <?php foreach ($data as $row): ?>
                             <tr>
                                 <th scope="row">
-                                    <a href="function.php?action=edit&id=<?= $row['id'] ?>"
+                                    <a href="form_edit.php?action=edit&id=<?= $row['id'] ?>"
                                         class="btn btn-primary">Edit</a>
                                     <a href="function.php?action=delete&id=<?= $row['id'] ?>"
                                         class="btn btn-outline-danger"

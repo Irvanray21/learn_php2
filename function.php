@@ -1,6 +1,6 @@
 <?php
 
-    require 'connection.php';
+require 'connection.php';
 // var_dump($_GET);
 // if action and id, then do ....
 if (isset($_GET['action']) && isset($_GET['id'])) {
@@ -14,23 +14,31 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         default:
             echo "Action is Unidentified";
     }
-}else{
+} else {
     echo "Action and ID are not identified";
 }
 
-function delete_data($id){
+function delete_data($id)
+{
     global $connection;
-    $res = mysqli_query($connection, "DELETE FROM tb_person WHERE id = ". $id);
+    $res = mysqli_query($connection, "DELETE FROM tb_person WHERE id = " . $id);
 
     //if true
-    if($res){
+    if ($res) {
         // $_SESSION['messages'] = "Sucessfully Deleted";
         header("location: index.php?messages=Sucessfully Deleted");
-    }else{
+    } else {
         //if false
         header("location: index.php?messages=Failed to Delete");
         exit();
-
     }
 }
-?>
+function update($data)
+{
+    global $connection;
+
+    $name = $connection->real_escape_string($data['txt_name']);
+    $idcard = $data['txt_idcard'];
+    $address = $data['selectAdd'];
+    $date = $data['txt_date'];
+}
