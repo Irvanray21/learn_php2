@@ -12,6 +12,9 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         case 'delete':
             delete_data($id);
             break;
+        case 'edit';
+            echo "";
+            break;
         default:
             echo "Action is Unidentified";
     }
@@ -42,16 +45,20 @@ function update($data)
     $idcard = $data['txt_idcard'];
     $address = $data['selectAdd'];
     $date = $data['txt_date'];
+    $id = $data['id_person'];
+
+    //formatting date
+    $new_date = new DateTime($date);
+    $formatted_date = $new_date->format('Y-m-d');
+
+    $query = "UPDATE tb_person SET 
+        name = '$name',
+        card_iden = '$idcard',
+        address = $address,
+        regis_date = '$formatted_date'
+        WHERE id = $id
+        ";
+
+    mysqli_query($connection, $query);
+    return mysqli_affected_rows($connection);
 }
-
- //formatting date
- $new_date = new DateTime($date);
- $formatted_date = $new_date->format('Y-m-d');
-
- $query = "UPDATE tb_person SET 
- name = '$name',
- card = '$card_id',
- address = '$address',
- regis = '$new_date'
- WHERE id = $id
- "

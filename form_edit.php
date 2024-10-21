@@ -24,27 +24,6 @@ if (isset($_POST['submit_update'])) {
     }
 }
 
-
-
-
-
-if (isset($_POST['submit_insert_warga'])) {
-
-
-   
-
-    $query_insert = "INSERT INTO tb_person
-    VALUE (null, '$name', '$idcard', '$address', '$date')";
-
-    $res = mysqli_query($connection, $query_insert);
-
-    if ($res) {
-        header("location: index.php");
-        exit();
-    } else {
-        $err = "Failed to input data";
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +52,7 @@ if (isset($_POST['submit_insert_warga'])) {
                 <div class="card">
                     <div class="card-body">
                         <form method="post">
-                            <input type="hidden" value="<?= $id_person?>" name="id_person"/>
+                            <input type="hidden" value="<?= $id_person ?>" name="id_person" />
                             <div class="mb-3">
                                 <label>Name</label>
                                 <input class="form-control" type="text" name="txt_name"
@@ -107,7 +86,7 @@ if (isset($_POST['submit_insert_warga'])) {
 
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-primary"
-                                    name="submit_insert_warga">
+                                    name="submit_update">
                                     Submit Here
                                 </button>
                             </div>
