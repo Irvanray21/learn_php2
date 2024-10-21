@@ -69,12 +69,6 @@ if (isset($_POST['submit_insert_warga'])) {
                             </div>
 
                             <div class="mb-3">
-                                <label>ID Card</label>
-                                <input class="form-control" type="date" name="txt_date"
-                                    autocomplete="off" />
-                            </div>
-
-                            <div class="mb-3">
                                 <label>Add address</label>
                                 <select class="form-select" name="selectAdd">
                                     <?php foreach ($data_address as $option): ?>
@@ -84,12 +78,21 @@ if (isset($_POST['submit_insert_warga'])) {
                                     <?php endforeach; ?>
                                 </select>
                             </div>
+
+                            <div class="mb-3">
+                                <label>ID Card</label>
+                                <input class="form-control" type="date" name="txt_date"
+                                    autocomplete="off" />
+                            </div>
+
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary" 
+                                name="submit_insert_warga">
+                                    Submit Here
+                                </button>
+                            </div>
                         </form>
-                        <div class="mb-3">
-                            <button type="button" class="btn btn-primary">
-                                Submit Here
-                            </button>
-                        </div>
+
                     </div>
                 </div>
 

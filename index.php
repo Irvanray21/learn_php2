@@ -1,7 +1,10 @@
 <?php
 require 'connection.php';
-$data = myquery("SELECT * FROM tb_person");
-
+// $data = myquery("SELECT * FROM tb_person");
+$data = myquery("SELECT p.id, p.name, p.card_iden, p.regis_date, a.home_add
+FROM tb_person as p
+JOIN tb_address as a
+ON p.address = a. id"); 
 
 ?>
 
@@ -41,6 +44,8 @@ $data = myquery("SELECT * FROM tb_person");
                             <th scope="col">Action</th>
                             <th scope="col">Name</th>
                             <th scope="col">ID Card</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Registration Date</th>
                         </tr>
                     </thead>
 
@@ -56,6 +61,8 @@ $data = myquery("SELECT * FROM tb_person");
                                 </th>
                                 <td><?= $row['name'] ?></td>
                                 <td><?= $row['card_iden'] ?></td>
+                                <td><?= $row['home_add'] ?></td>
+                                <td><?= $row['regis_date'] ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
