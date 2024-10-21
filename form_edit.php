@@ -101,7 +101,7 @@ if (isset($_POST['submit_insert_warga'])) {
                             <div class="mb-3">
                                 <label>ID Card</label>
                                 <input class="form-control" type="date" name="txt_date"
-                                    autocomplete="off" value="<? $data_person[0]['regis_date'] ?>" />
+                                    autocomplete="off" value="<?php echo $data_person[0]['regis_date'] ?>" />
                             </div>
 
                             <div class="mb-3">
