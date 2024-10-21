@@ -1,5 +1,6 @@
 <?php
 
+// require_once 'connection.php';
 require 'connection.php';
 // var_dump($_GET);
 // if action and id, then do ....
@@ -42,3 +43,15 @@ function update($data)
     $address = $data['selectAdd'];
     $date = $data['txt_date'];
 }
+
+ //formatting date
+ $new_date = new DateTime($date);
+ $formatted_date = $new_date->format('Y-m-d');
+
+ $query = "UPDATE tb_person SET 
+ name = '$name',
+ card = '$card_id',
+ address = '$address',
+ regis = '$new_date'
+ WHERE id = $id
+ "

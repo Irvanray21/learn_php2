@@ -1,5 +1,7 @@
 <?php
-require 'connection.php';
+// require 'connection.php';
+$_GET['action'] = 'edit';
+require 'function.php';
 
 $id_person = $_GET['id'];
 
@@ -29,9 +31,7 @@ if (isset($_POST['submit_update'])) {
 if (isset($_POST['submit_insert_warga'])) {
 
 
-    //formatting date
-    $new_date = new DateTime($date);
-    $formatted_date = $new_date->format('Y-m-d');
+   
 
     $query_insert = "INSERT INTO tb_person
     VALUE (null, '$name', '$idcard', '$address', '$date')";
@@ -73,6 +73,7 @@ if (isset($_POST['submit_insert_warga'])) {
                 <div class="card">
                     <div class="card-body">
                         <form method="post">
+                            <input type="hidden" value="<?= $id_person?>" name="id_person"/>
                             <div class="mb-3">
                                 <label>Name</label>
                                 <input class="form-control" type="text" name="txt_name"
