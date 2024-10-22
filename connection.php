@@ -35,3 +35,5 @@ function myquery($query)
     }
     return $returns;
 }
+
+?>
