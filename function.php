@@ -51,7 +51,7 @@ function update($data)
     $new_date = new DateTime($date);
     $formatted_date = $new_date->format('Y-m-d');
 
-    $query = "UPDATE tb_person SET 
+    $query = "UPDATE tb_person SET      `
         name = '$name',
         card_iden = '$idcard',
         address = $address,
